@@ -71,8 +71,8 @@ export default function Table(props: {
                   className="bg-white border-b dark:border-blue-700"
                 >
                   <td className="py-4 px-6">{item.iterasi}</td>
-                  <td className="py-4 px-6">{item.x.toFixed(2)}</td>
-                  <td className="py-4 px-6">{item.fx.toFixed(2)}</td>
+                  <td className="py-4 px-6">{item.x.toFixed(3)}</td>
+                  <td className="py-4 px-6">{item.fx.toFixed(3)}</td>
                 </tr>
               );
             })}
@@ -82,7 +82,7 @@ export default function Table(props: {
             <tr className="bg-white font-bold">
               <td className="py-4 px-6">Total</td>
               <td className="py-4 px-6"></td>
-              <td className="py-4 px-6">{props.totalFx.toFixed(2)}</td>
+              <td className="py-4 px-6">{props.totalFx.toFixed(3)}</td>
             </tr>
             {/* end table total */}
           </tbody>
