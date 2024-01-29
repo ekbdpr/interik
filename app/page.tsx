@@ -29,9 +29,9 @@ export default function Home() {
         {/* end title */}
       </div>
 
-      <div className="mt-4 flex grow flex-col md:flex-row gap-4">
+      <div className="mt-4 flex lg:grow flex-col md:flex-row gap-4">
         {/* content */}
-        <div className="flex order-2 md:order-1 flex-col justify-center gap-6 rounded-lg bg-gray-50 py-10 w-full md:w-2/5 px-12 md:px-20">
+        <div className="flex order-2 md:order-1 flex-col justify-center gap-6 rounded-lg bg-gray-50 py-10 w-full md:w-4/5 xl:w-2/5 px-12 md:px-20">
           <p className="text-gray-800 text-lg md:text-2xl leading-normal">
             <strong>Selamat Datang di InteRik.</strong> Ini adalah aplikasi yang
             akan melakukan operasi numerik dengan menggunakan{' '}
@@ -48,7 +48,7 @@ export default function Home() {
         {/* end content */}
 
         {/* hero */}
-        <div className="flex order-1 md:order-2 items-center justify-center p-6 w-full md:w-3/5 px-16 md:px-28 py-12">
+        <div className="flex order-1 md:order-2 items-center justify-center p-6 w-full md:w-2/5 lg:w-3/5 px-16 lg:px-28 py-2 md:py-12">
           <Image
             data-aos="fade-down"
             data-aos-duration="2000"

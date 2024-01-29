@@ -10,7 +10,7 @@ export default function Layout({
       {/* end header */}
 
       {/* content */}
-      <div className="flex flex-row mx-4 md:mx-auto justify-around">
+      <div className="flex flex-row mx-4 md:mx-auto justify-around md:w-3/5 xl:w-auto">
         {children}
       </div>
       {/* end content */}

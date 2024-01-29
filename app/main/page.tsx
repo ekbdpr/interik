@@ -44,7 +44,7 @@ export default function Page() {
   return (
     <main className="flex min-h-screen bg-gray-50">
       {/* main content nav */}
-      <nav className="flex flex-col w-4/6 md:w-3/5 items-center justify-center mx-auto my-20 md:m-auto">
+      <nav className="flex flex-col w-4/6 md:w-3/5 items-center justify-center mx-auto my-14 lg:my-20 md:m-auto">
         {/* title */}
         <h1
           data-aos="fade-down"
