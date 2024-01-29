@@ -51,7 +51,7 @@ export default function Header() {
                 key={link.id}
                 href={link.href}
                 className={clsx(
-                  'px-4 py-3 mt-5 md:mt-0 text-sm md:text-base hover:text-blue-500',
+                  'px-2 md:px-4 py-3 mt-5 md:mt-0 text-xs md:text-base hover:text-blue-500',
                   {
                     'bg-blue-500 text-white shadow-lg rounded-lg pointer-events-none':
                       pathname == link.href,

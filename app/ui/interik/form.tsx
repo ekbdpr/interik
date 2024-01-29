@@ -25,7 +25,7 @@ export default function Form(props: {
   }, []);
 
   return (
-    <div data-aos="fade-left" data-aos-duration="500" className="p-8">
+    <div data-aos="fade-down" data-aos-duration="500">
       <div className="flex flex-col justify-center gap-12 w-full mx-0 bg-gray-50 p-0 md:p-8 rounded-lg shadow-md">
         {/* title */}
         <div className="flex flex-col gap-2 p-6">
