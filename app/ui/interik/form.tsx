@@ -25,11 +25,13 @@ export default function Form(props: {
   }, []);
 
   return (
-    <div data-aos="fade-left" data-aos-duration="500">
-      <div className="flex flex-col gap-12 bg-gray-50 p-8 rounded-lg shadow-md">
+    <div data-aos="fade-left" data-aos-duration="500" className="p-8">
+      <div className="flex flex-col justify-center gap-12 w-full mx-0 bg-gray-50 p-0 md:p-8 rounded-lg shadow-md">
         {/* title */}
-        <div className="flex flex-col gap-2">
-          <h1 className="text-center font-bold text-lg">{props.name}</h1>
+        <div className="flex flex-col gap-2 p-6">
+          <h1 className="text-center font-bold text-base md:text-lg">
+            {props.name}
+          </h1>
           <span
             className="flex-grow block border-t border-gray-400"
             aria-hidden="true"
@@ -39,7 +41,7 @@ export default function Form(props: {
         {/* end title */}
 
         {/* input-box f(x) */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 p-6">
           <p className="font-bold leading-10 indent-4 underline underline-offset-8">
             f(x)
           </p>
@@ -52,7 +54,7 @@ export default function Form(props: {
         </div>
         {/* end input-box f(x) */}
 
-        <div className="flex flex-row gap-6">
+        <div className="flex flex-col xl:flex-row gap-6 p-6">
           {/* input-box x */}
           <div className="flex flex-col gap-2">
             <p className="font-bold leading-10 indent-4 underline underline-offset-8">
@@ -89,7 +91,7 @@ export default function Form(props: {
         </div>
 
         {/* input-box N */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 p-6">
           <p className="font-bold leading-10 indent-4 underline underline-offset-8">
             N
           </p>
@@ -105,7 +107,7 @@ export default function Form(props: {
         </div>
         {/* end input-box N */}
 
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row gap-2 p-6 justify-around md:justify-normal">
           {/* reset button */}
           <button
             type="reset"

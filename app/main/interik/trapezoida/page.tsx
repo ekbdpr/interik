@@ -159,7 +159,7 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-20">
+    <div className="flex flex-col w-full xl:flex-row gap-20">
       {/* form */}
       <Form
         name={metodeName}

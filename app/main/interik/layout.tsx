@@ -10,7 +10,7 @@ export default function Layout({
       {/* end header */}
 
       {/* content */}
-      <div className="flex flex-row justify-around">{children}</div>
+      <div className="flex flex-row mx-4 justify-around">{children}</div>
       {/* end content */}
     </div>
   );

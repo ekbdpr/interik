@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className="w-full text-gray-700 bg-white border-t border-gray-100 shadow-sm body-font">
-      <div className="container flex py-2 px-6  mx-auto flex-col md:flex-row">
+      <div className="container flex py-2 px-2 md:px-6  mx-auto flex-col md:flex-row">
         {/* logo */}
         <Link
           href="/"
@@ -31,7 +31,7 @@ export default function Header() {
               width={0}
               height={0}
               alt="logo"
-              className="w-10 mx-auto"
+              className="w-20 md:w-10 mx-auto"
             />
 
             <p className="font-bold leading-10 text-xl text-blue-950 hidden md:block">
@@ -50,10 +50,13 @@ export default function Header() {
               <Link
                 key={link.id}
                 href={link.href}
-                className={clsx('px-4 hover:text-blue-500', {
-                  'bg-blue-500 text-white shadow-lg rounded-lg pointer-events-none':
-                    pathname == link.href,
-                })}
+                className={clsx(
+                  'px-4 py-3 mt-5 md:mt-0 text-sm md:text-base hover:text-blue-500',
+                  {
+                    'bg-blue-500 text-white shadow-lg rounded-lg pointer-events-none':
+                      pathname == link.href,
+                  }
+                )}
               >
                 {link.name}
               </Link>
