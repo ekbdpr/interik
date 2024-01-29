@@ -28,7 +28,7 @@ export default function Table(props: {
     <div
       data-aos="zoom-in"
       data-aos-duration="500"
-      className={clsx('pb-5 md:p-8', {
+      className={clsx('pb-5 md:p-6', {
         hidden: tableContent.length === 0,
       })}
     >
