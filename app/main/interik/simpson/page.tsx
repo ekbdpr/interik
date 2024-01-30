@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Form from '@/app/ui/interik/form';
 import Table from '@/app/ui/interik/table';
@@ -13,10 +13,10 @@ export default function Page() {
   const metodeName = 'Metode Simpson';
 
   const [fxValue, setFxValue] = useState<string>('');
-  const [sumbuXValue, setSumbuXValue] = useState<number>(0);
-  const [sumbuYValue, setSumbuYValue] = useState<number>(0);
-  const [nValue, setNValue] = useState<number>(0);
-  const [hValue, setHValue] = useState<number>(0);
+  const [sumbuXValue, setSumbuXValue] = useState<number>(NaN);
+  const [sumbuYValue, setSumbuYValue] = useState<number>(NaN);
+  const [nValue, setNValue] = useState<number>(NaN);
+  const [hValue, setHValue] = useState<number>(NaN);
 
   const [tableContent, setTableContent] = useState<
     { id: number; iterasi: number; x: number; fx: number }[]
@@ -26,6 +26,8 @@ export default function Page() {
   const [numerikVal, setNumerikVal] = useState<number>(0);
   const [eksakVal, setEksakVal] = useState<number>(0);
   const [errorVal, setErrorVal] = useState<number>(0);
+
+  const [isInputEmpty, setIsInputEmpty] = useState<boolean>(true);
 
   // mengambil nilai f(x)
   const getFxValue = (xVal: number): number => {
@@ -58,7 +60,7 @@ export default function Page() {
     return (sumbuYValue - sumbuXValue) / nValue;
   };
 
-  // set array object riemann
+  // set array object simpson
   let simpsonArr: { id: number; iterasi: number; x: number; fx: number }[] = [];
 
   const iterationObj = (): void => {
@@ -144,6 +146,7 @@ export default function Page() {
   const countErrorVal = (): number =>
     Math.abs(countNumerikSolution() - countEksakSolution());
 
+  // handle submit klik
   const handleCountClick = (): void => {
     setHValue(calcHValue());
     iterationObj();
@@ -156,29 +159,39 @@ export default function Page() {
     console.log(countNumerikSolution());
   };
 
-  const handleResetClick = (): void => {
-    setFxValue('');
-    setSumbuXValue(0);
-    setSumbuYValue(0);
-    setNValue(0);
+  // validasi input
+  const inputValidation = () => {
+    console.log(sumbuXValue);
+
+    if (
+      fxValue === '' ||
+      Number.isNaN(sumbuXValue) ||
+      Number.isNaN(sumbuYValue) ||
+      Number.isNaN(nValue)
+    ) {
+      setIsInputEmpty(true);
+      return;
+    }
+
+    setIsInputEmpty(false);
   };
+
+  useEffect(
+    () => inputValidation(),
+    [fxValue, sumbuXValue, sumbuYValue, nValue]
+  );
 
   return (
     <div className="flex flex-col w-full xl:flex-row gap-20">
       {/* form */}
       <Form
         name={metodeName}
-        fxValue={fxValue}
-        sumbuXValue={sumbuXValue}
-        sumbuYValue={sumbuYValue}
-        nValue={nValue}
-        hValue={hValue}
+        isInputEmpty={isInputEmpty}
         setFxValue={setFxValue}
         setXValue={setSumbuXValue}
         setYValue={setSumbuYValue}
         setNValue={setNValue}
         handleCountClick={handleCountClick}
-        handleResetClick={handleResetClick}
       />
       {/* end form */}
 

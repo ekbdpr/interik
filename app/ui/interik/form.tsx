@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -8,18 +8,25 @@ import clsx from 'clsx';
 
 export default function Form(props: {
   name: string;
-  fxValue: string;
-  sumbuXValue: number;
-  sumbuYValue: number;
-  nValue: number;
-  hValue: number;
+  isInputEmpty: boolean;
   setFxValue: React.Dispatch<React.SetStateAction<string>>;
   setXValue: React.Dispatch<React.SetStateAction<number>>;
   setYValue: React.Dispatch<React.SetStateAction<number>>;
   setNValue: React.Dispatch<React.SetStateAction<number>>;
   handleCountClick: () => void;
-  handleResetClick: () => void;
 }) {
+  const fxRef: any = useRef();
+  const xRef: any = useRef();
+  const yRef: any = useRef();
+  const nRef: any = useRef();
+
+  const handleResetClick = () => {
+    fxRef.current.value = '';
+    xRef.current.value = '';
+    yRef.current.value = '';
+    nRef.current.value = '';
+  };
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -46,10 +53,10 @@ export default function Form(props: {
             f(x)
           </p>
           <input
+            ref={fxRef}
             className="h-10 min-w-[12rem] rounded-lg border-blue-950 indent-4 shadow-lg focus:outline-none focus:ring focus:ring-blue-950"
-            placeholder="Masukkan Nilai f(x)"
+            placeholder="Masukkan Nilai f(x) | cth: 2x^3"
             onChange={(event) => props.setFxValue(event.currentTarget.value)}
-            value={props.fxValue}
           />
         </div>
         {/* end input-box f(x) */}
@@ -61,10 +68,10 @@ export default function Form(props: {
               Sumbu x
             </p>
             <input
+              ref={xRef}
               type="number"
               className="[&::-webkit-inner-spin-button]:appearance-none h-10 min-w-[12rem] rounded-lg border-blue-950 indent-4 shadow-lg focus:outline-none focus:ring focus:ring-blue-950"
               placeholder="Masukkan Nilai x"
-              value={props.sumbuXValue}
               onChange={(event) =>
                 props.setXValue(parseFloat(event.currentTarget.value))
               }
@@ -78,10 +85,10 @@ export default function Form(props: {
               Sumbu y
             </p>
             <input
+              ref={yRef}
               type="number"
               className="[&::-webkit-inner-spin-button]:appearance-none h-10 min-w-[12rem] rounded-lg border-blue-950 indent-4 shadow-lg focus:outline-none focus:ring focus:ring-blue-950"
               placeholder="Masukkan Nilai y"
-              value={props.sumbuYValue}
               onChange={(event) =>
                 props.setYValue(parseFloat(event.currentTarget.value))
               }
@@ -96,10 +103,10 @@ export default function Form(props: {
             N
           </p>
           <input
+            ref={nRef}
             type="number"
             className="[&::-webkit-inner-spin-button]:appearance-none h-10 min-w-[12rem] rounded-lg border-blue-950 indent-4 shadow-lg focus:outline-none focus:ring focus:ring-blue-950"
             placeholder="Masukkan Nilai N"
-            value={props.nValue}
             onChange={(event) =>
               props.setNValue(parseFloat(event.currentTarget.value))
             }
@@ -113,7 +120,7 @@ export default function Form(props: {
             type="reset"
             tabIndex={-1}
             className="h-10 min-w-[8rem] rounded-lg border-2 border-gray-200 bg-gray-50 text-black shadow-lg hover:bg-black hover:text-white focus:outline-none focus:ring focus:ring-black"
-            onClick={props.handleResetClick}
+            onClick={handleResetClick}
           >
             Reset
           </button>
@@ -126,7 +133,7 @@ export default function Form(props: {
             className={clsx(
               'h-10 min-w-[8rem] rounded-lg border-2 bg-blue-600 text-white shadow-lg hover:bg-blue-950 focus:outline-none focus:ring focus:ring-blue-950',
               {
-                'pointer-events-none bg-gray-400': props.fxValue === '',
+                'pointer-events-none bg-gray-400': props.isInputEmpty,
               }
             )}
             onClick={props.handleCountClick}
